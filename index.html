@@ -10,6 +10,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Cinematic Splash Screen Intro -->
+    <div id="splashScreen" class="splash-screen" onclick="hideSplashScreen()">
+        <div class="splash-content">
+            <div class="logo-circle splash-logo">
+                <div class="sparkle top-right">✦</div>
+                <div class="sparkle bottom-left">✦</div>
+                <h1 class="logo-text">SM</h1>
+                <span class="logo-subtext">PHOTOROOM</span>
+            </div>
+            <p class="splash-tagline">HACEMOS TU EVENTO</p>
+            <h2 class="splash-title">INOLVIDABLE</h2>
+            <div class="splash-divider"></div>
+            <span class="splash-hint">Toca para ingresar...</span>
+        </div>
+    </div>
+
     <div class="stars-bg"></div>
 
     <!-- Header / Logo Area -->
@@ -372,6 +388,11 @@
                     <span class="dot" onclick="setReviewIndex(3)"></span>
                 </div>
             </div>
+
+            <!-- Write Review Button -->
+            <div class="write-review-container">
+                <button class="leave-review-btn" onclick="openWriteReviewModal()">✍️ ¡Déjanos tu Opinión!</button>
+            </div>
         </section>
 
         <!-- Call to Action Banner -->
@@ -427,6 +448,49 @@
                     <span>Cotizar por WhatsApp (844 179 0939)</span>
                 </a>
             </div>
+        </div>
+    </div>
+
+    <!-- Write Review Modal -->
+    <div id="writeReviewModal" class="modal">
+        <div class="modal-content form-modal-content">
+            <span class="close-btn" onclick="closeWriteReviewModal()">&times;</span>
+            <h3>¡DÉJANOS TU OPINIÓN!</h3>
+            <p class="modal-subtitle">Nos encanta saber cómo disfrutaste tu evento</p>
+
+            <form class="review-form" onsubmit="event.preventDefault(); submitUserReview();">
+                <div class="form-group">
+                    <input type="text" id="revAuthor" placeholder="Tu Nombre o Apodo" required>
+                </div>
+
+                <div class="form-group">
+                    <select id="revEventType">
+                        <option value="Boda">Boda</option>
+                        <option value="Mis XV Años">Mis XV Años</option>
+                        <option value="Graduación">Graduación</option>
+                        <option value="Fiesta / Cumpleaños">Fiesta / Cumpleaños</option>
+                        <option value="Evento Empresarial">Evento Empresarial</option>
+                        <option value="Otro Evento">Otro Evento</option>
+                    </select>
+                </div>
+
+                <div class="form-group rating-group">
+                    <label>Tu Calificación:</label>
+                    <div id="interactiveStars" class="interactive-stars">
+                        <span class="star active" onclick="setRating(1)">★</span>
+                        <span class="star active" onclick="setRating(2)">★</span>
+                        <span class="star active" onclick="setRating(3)">★</span>
+                        <span class="star active" onclick="setRating(4)">★</span>
+                        <span class="star active" onclick="setRating(5)">★</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <textarea id="revComment" placeholder="Escribe aquí tu opinión o experiencia con SM PHOTOROOM..." rows="3" required></textarea>
+                </div>
+
+                <button type="submit" class="quote-btn submit-rev-btn">Enviar Reseña por WhatsApp</button>
+            </form>
         </div>
     </div>
 
