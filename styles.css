@@ -31,6 +31,77 @@ body {
     position: relative;
 }
 
+/* Cinematic Splash Screen Intro */
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000000;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
+}
+
+.splash-screen.hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.splash-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.splash-logo {
+    width: 140px;
+    height: 140px;
+    margin-bottom: 20px;
+    animation: splashPulse 2s infinite alternate;
+}
+
+.splash-tagline {
+    font-size: 14px;
+    color: var(--cyan-neon);
+    letter-spacing: 4px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    animation: fadeIn 1.2s ease;
+}
+
+.splash-title {
+    font-family: var(--font-heading);
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    color: #FFFFFF;
+    text-shadow: 0 0 15px rgba(0, 229, 255, 0.7);
+    margin-bottom: 12px;
+    animation: fadeIn 1.5s ease;
+}
+
+.splash-divider {
+    height: 2px;
+    width: 120px;
+    background: linear-gradient(90deg, transparent, var(--cyan-neon), transparent);
+    margin-bottom: 25px;
+}
+
+.splash-hint {
+    font-size: 11px;
+    color: var(--text-silver);
+    letter-spacing: 2px;
+    animation: blinkHint 1.5s infinite;
+}
+
 /* Background subtle stars/glow effect */
 .stars-bg {
     position: fixed;
@@ -55,13 +126,13 @@ body {
 .header {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     padding-top: 5px;
 }
 
 .logo-circle {
-    width: 120px;
-    height: 120px;
+    width: 115px;
+    height: 115px;
     border-radius: 50%;
     border: 2px solid rgba(255, 255, 255, 0.9);
     box-shadow: 0 0 20px var(--cyan-neon), inset 0 0 15px rgba(0, 229, 255, 0.3);
@@ -102,7 +173,7 @@ body {
     margin-top: 3px;
 }
 
-/* Navigation Tabs Horizontal (Sleek Segmented Control for PC & Mobile) */
+/* Navigation Tabs Horizontal Compact (3 Tabs) */
 .main-nav {
     display: flex;
     justify-content: space-between;
@@ -688,6 +759,109 @@ body {
     box-shadow: 0 0 10px var(--cyan-neon);
 }
 
+/* Leave Review Button & Form Modal */
+.write-review-container {
+    text-align: center;
+    margin-top: 18px;
+}
+
+.leave-review-btn {
+    background: rgba(0, 229, 255, 0.1);
+    border: 1.5px solid var(--cyan-neon);
+    color: var(--cyan-neon);
+    font-weight: 800;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.leave-review-btn:hover, .leave-review-btn:active {
+    background: var(--cyan-neon);
+    color: #000000;
+    box-shadow: 0 0 20px var(--cyan-neon);
+}
+
+.form-modal-content {
+    text-align: left;
+    padding: 25px 20px;
+}
+
+.form-modal-content h3 {
+    text-align: center;
+}
+
+.modal-subtitle {
+    text-align: center;
+    font-size: 11px;
+    color: var(--cyan-neon);
+    margin-bottom: 18px;
+}
+
+.review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid var(--border-glow);
+    color: #FFFFFF;
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-family: var(--font-body);
+    font-size: 12px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--cyan-neon);
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+}
+
+.rating-group label {
+    font-size: 11px;
+    color: var(--text-silver);
+    font-weight: 600;
+}
+
+.interactive-stars {
+    display: flex;
+    gap: 6px;
+    font-size: 26px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.interactive-stars .star {
+    color: rgba(255, 255, 255, 0.2);
+    transition: color 0.2s;
+}
+
+.interactive-stars .star.active {
+    color: var(--gold-neon);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+.submit-rev-btn {
+    margin-top: 10px;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+}
+
 /* CTA Banner */
 .cta-banner {
     margin-bottom: 35px;
@@ -931,6 +1105,16 @@ body {
 @keyframes neonPulse {
     0% { box-shadow: 0 0 15px var(--cyan-neon); }
     100% { box-shadow: 0 0 28px var(--cyan-neon), inset 0 0 20px rgba(0, 229, 255, 0.5); }
+}
+
+@keyframes splashPulse {
+    0% { box-shadow: 0 0 20px var(--cyan-neon), inset 0 0 15px rgba(0, 229, 255, 0.3); }
+    100% { box-shadow: 0 0 35px var(--cyan-neon), inset 0 0 25px rgba(0, 229, 255, 0.6); }
+}
+
+@keyframes blinkHint {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
 }
 
 @keyframes fadeIn {
