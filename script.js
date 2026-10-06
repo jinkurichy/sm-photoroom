@@ -30,9 +30,79 @@ let currentCategoryList = [];
 let currentPhotoIndex = 0;
 let currentCategoryTitle = '';
 
-// Customer Reviews Carousel Logic
+// Customer Reviews & Local Storage Persistence
+const defaultReviews = [
+    {
+        author: "Mariana & Carlos",
+        eventType: "Boda Elegante",
+        stars: 5,
+        comment: "¡La cabina de fotos y el espejo de bienvenida fueron el éxito total de nuestra boda! Todos los invitados quedaron fascinados con sus fotos impresas."
+    },
+    {
+        author: "Familia Martínez",
+        eventType: "Mis XV Años Majo",
+        stars: 5,
+        comment: "El teléfono de mensajes vintage fue lo más emotivo de la fiesta. Escuchar de nuevo los audios de nuestros seres queridos no tiene precio. ¡Súper recomendados!"
+    },
+    {
+        author: "Rodrigo & Amigos",
+        eventType: "Graduación & Fiesta",
+        stars: 5,
+        comment: "El carrito de shots y los chisperos encendieron la pista de baile al máximo. Excelente servicio, puntualidad y la mejor energía de todo el equipo."
+    },
+    {
+        author: "Dra. Andrea L.",
+        eventType: "Evento Empresarial",
+        stars: 5,
+        comment: "Contratamos la cabina con la botarga de Dr. Simi y La Monja. ¡Fue divertidísimo! Risas garantizadas y las fotos impresas salieron con excelente calidad."
+    }
+];
+
 let currentReviewIndex = 0;
 let reviewInterval = null;
+let userSelectedRating = 5;
+
+function getStoredReviews() {
+    try {
+        const stored = localStorage.getItem('sm_custom_reviews');
+        return stored ? JSON.parse(stored) : [];
+    } catch (e) {
+        return [];
+    }
+}
+
+function renderReviewsCarousel() {
+    const carouselContainer = document.querySelector('.reviews-carousel');
+    const dotsContainer = document.querySelector('.review-dots');
+
+    if (!carouselContainer || !dotsContainer) return;
+
+    const allReviews = [...defaultReviews, ...getStoredReviews()];
+
+    let carouselHtml = '';
+    let dotsHtml = '';
+
+    allReviews.forEach((rev, index) => {
+        const activeClass = index === currentReviewIndex ? 'active' : '';
+        const starString = '★'.repeat(rev.stars || 5);
+
+        carouselHtml += `
+            <div class="review-card ${activeClass}">
+                <div class="stars-rating">${starString}</div>
+                <p class="review-text">"${rev.comment}"</p>
+                <div class="review-author">
+                    <span class="author-name">${rev.author}</span>
+                    <span class="event-type">${rev.eventType}</span>
+                </div>
+            </div>
+        `;
+
+        dotsHtml += `<span class="dot ${activeClass}" onclick="setReviewIndex(${index})"></span>`;
+    });
+
+    carouselContainer.innerHTML = carouselHtml;
+    dotsContainer.innerHTML = dotsHtml;
+}
 
 function showReview(index) {
     const reviewCards = document.querySelectorAll('.review-card');
@@ -46,12 +116,13 @@ function showReview(index) {
     });
 
     currentReviewIndex = (index + reviewCards.length) % reviewCards.length;
-    reviewCards[currentReviewIndex].classList.add('active');
+    if (reviewCards[currentReviewIndex]) reviewCards[currentReviewIndex].classList.add('active');
     if (dots[currentReviewIndex]) dots[currentReviewIndex].classList.add('active');
 }
 
 function nextReview() {
-    showReview(currentReviewIndex + 1);
+    const allReviews = [...defaultReviews, ...getStoredReviews()];
+    showReview((currentReviewIndex + 1) % allReviews.length);
 }
 
 function setReviewIndex(index) {
@@ -69,6 +140,92 @@ function resetReviewTimer() {
     if (reviewInterval) {
         clearInterval(reviewInterval);
         reviewInterval = setInterval(nextReview, 4000);
+    }
+}
+
+// User Review Submission
+function setRating(rating) {
+    userSelectedRating = rating;
+    const stars = document.querySelectorAll('#interactiveStars .star');
+    stars.forEach((star, index) => {
+        if (index < rating) {
+            star.classList.add('active');
+        } else {
+            star.classList.remove('active');
+        }
+    });
+}
+
+function openWriteReviewModal() {
+    const modal = document.getElementById('writeReviewModal');
+    if (modal) modal.style.display = 'flex';
+}
+
+function closeWriteReviewModal() {
+    const modal = document.getElementById('writeReviewModal');
+    if (modal) modal.style.display = 'none';
+}
+
+function submitUserReview() {
+    const author = document.getElementById('revAuthor').value.trim();
+    const eventType = document.getElementById('revEventType').value;
+    const comment = document.getElementById('revComment').value.trim();
+
+    if (!author || !comment) {
+        alert("Por favor ingresa tu nombre y comentario.");
+        return;
+    }
+
+    const newReview = {
+        author: author,
+        eventType: eventType,
+        stars: userSelectedRating,
+        comment: comment
+    };
+
+    // Save to LocalStorage
+    const stored = getStoredReviews();
+    stored.push(newReview);
+    try {
+        localStorage.setItem('sm_custom_reviews', JSON.stringify(stored));
+    } catch (e) {
+        console.log("Error guardando reseña localmente");
+    }
+
+    // Set current view index to newly added review
+    const allReviews = [...defaultReviews, ...stored];
+    currentReviewIndex = allReviews.length - 1;
+
+    // Render immediately in live carousel
+    renderReviewsCarousel();
+    resetReviewTimer();
+
+    // Scroll smoothly to reviews section
+    const reviewsSection = document.querySelector('.reviews-section');
+    if (reviewsSection) {
+        reviewsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Open WhatsApp Notification
+    const starString = "★".repeat(userSelectedRating);
+    const message = `Hola SM PHOTOROOM, acabo de publicar la siguiente opinión en su página web:\n\n` +
+                    `⭐ Calificación: ${starString} (${userSelectedRating}/5)\n` +
+                    `👤 Nombre: ${author}\n` +
+                    `🎉 Evento: ${eventType}\n` +
+                    `💬 Opinión: "${comment}"`;
+
+    const encoded = encodeURIComponent(message);
+    window.open(`https://wa.me/528446086267?text=${encoded}`, '_blank');
+
+    closeWriteReviewModal();
+    alert("¡Muchas gracias! Tu opinión ya fue publicada en la sección 'LO QUE DICEN NUESTROS CLIENTES'.");
+}
+
+// Splash Screen Logic
+function hideSplashScreen() {
+    const splash = document.getElementById('splashScreen');
+    if (splash) {
+        splash.classList.add('hidden');
     }
 }
 
@@ -255,6 +412,7 @@ function parseCSV(text) {
 window.onclick = function(event) {
     const serviceModal = document.getElementById('serviceModal');
     const photoLightboxModal = document.getElementById('photoLightboxModal');
+    const writeReviewModal = document.getElementById('writeReviewModal');
 
     if (event.target === serviceModal) {
         serviceModal.style.display = 'none';
@@ -262,10 +420,19 @@ window.onclick = function(event) {
     if (event.target === photoLightboxModal) {
         photoLightboxModal.style.display = 'none';
     }
+    if (event.target === writeReviewModal) {
+        writeReviewModal.style.display = 'none';
+    }
 };
 
 // Initialization on DOM Load
 document.addEventListener('DOMContentLoaded', () => {
+    renderReviewsCarousel();
     startReviewTimer();
     loadPromosFromSheets();
+
+    // Auto-hide Splash Screen after 2.5s
+    setTimeout(() => {
+        hideSplashScreen();
+    }, 2500);
 });
