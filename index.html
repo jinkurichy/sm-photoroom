@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SM PHOTOROOM - Hacemos Tu Evento Inolvidable</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="stars-bg"></div>
+
+    <!-- Header / Logo Area -->
+    <header class="header">
+        <div class="logo-circle">
+            <div class="sparkle top-right">✦</div>
+            <div class="sparkle bottom-left">✦</div>
+            <h1 class="logo-text">SM</h1>
+            <span class="logo-subtext">PHOTOROOM</span>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs Horizontal Compact -->
+    <nav class="main-nav">
+        <button class="nav-btn active" onclick="switchMainTab('services')">SERVICIOS</button>
+        <button class="nav-btn" onclick="switchMainTab('promos')">PROMOS</button>
+        <button class="nav-btn" onclick="switchMainTab('gallery')">CASOS DE ÉXITO</button>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <p class="tagline">HACEMOS TU EVENTO</p>
+            <h2 class="hero-title">INOLVIDABLE</h2>
+            <p class="hero-subtitle">Recuerdos que duran para siempre</p>
+            <div class="divider"></div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="servicesSection" class="services-section tab-content active">
+            <h3 class="section-title">NUESTROS SERVICIOS</h3>
+
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card" onclick="openServiceModal('Cabina de Fotos', 'Foto impresa y/o llavero para tus invitados. ¡Un recuerdo físico instantáneo de la mejor fiesta!')">
+                    <div class="icon-circle">
+                        <svg viewBox="0 0 24 24" class="icon"><path fill="currentColor" d="M4 4h3l2-2h6l2 2h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm8 3a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg>
+                    </div>
+                    <div class="service-content">
+                        <h4>CABINA DE FOTOS</h4>
+                        <p>Foto impresa y/o llavero</p>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card" onclick="openServiceModal('Teléfono de Mensajes', 'Deja tu mensaje de voz, guárdalo para siempre. Una experiencia emotiva e interactiva para tus invitados.')">
+                    <div class="icon-circle">
+                        <svg viewBox="0 0 24 24" class="icon"><path fill="currentColor" d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    </div>
+                    <div class="service-content">
+                        <h4>TELÉFONO DE MENSAJES</h4>
+                        <p>Deja tu mensaje, guárdalo para siempre.</p>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card" onclick="openServiceModal('Espejo de Bienvenida', 'Espejo elegante y personalizado para la bienvenida de tu evento. El spot perfecto para fotos de tus invitados.')">
+                    <div class="icon-circle">
+                        <svg viewBox="0 0 24 24" class="icon"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+                    </div>
+                    <div class="service-content">
+                        <h4>ESPEJO DE BIENVENIDA</h4>
+                        <p>Personalizado para tu evento.</p>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card" onclick="openServiceModal('Carrito de Shots', 'El complemento perfecto para encender la fiesta con bebidas y shots temáticos.')">
+                    <div class="icon-circle">
+                        <svg viewBox="0 0 24 24" class="icon"><path fill="currentColor" d="M3 2l2.21 20H18.8L21 2H3zm15 4l-.5 4.5h-11L6 6h12z"/></svg>
+                    </div>
+                    <div class="service-content">
+                        <h4>CARRITO DE SHOTS</h4>
+                        <p>El complemento perfecto para la fiesta.</p>
+                    </div>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-card" onclick="openServiceModal('Robot LED', 'Show interactivo de Robot LED lleno de diversión, luces, efectos de humo y animación máxima.')">
+                    <div class="icon-circle">
+                        <svg viewBox="0 0 24 24" class="icon"><path fill="currentColor" d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.38-1 1.72V7h4a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h4V5.72A2.001 2.001 0 0 1 10 4a2 2 0 0 1 2-2zm-3 8a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm6 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-5 6h4v1.5h-4V16z"/></svg>
+                    </div>
+                    <div class="service-content">
+                        <h4>ROBOT LED</h4>
+                        <p>Diversión, luces y entretenimiento.</p>
+                    </div>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="service-card" onclick="openServiceModal('Cabezones', 'Fotos divertidas e increíbles con máscaras gigantes temáticas de tus artistas y personajes favoritos.')">
+                    <div class="icon-circle">
+                        <svg viewBox="0 0 24 24" class="icon"><path fill="currentColor" d="M12 2a9 9 0 0 0-9 9c0 3.5 2 6.5 5 7.93V21a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.07c3-1.43 5-4.43 5-7.93a9 9 0 0 0-9-9zm-3 8a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm6 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg>
+                    </div>
+                    <div class="service-content">
+                        <h4>CABEZONES</h4>
+                        <p>Fotos increíbles con mucho estilo.</p>
+                    </div>
+                </div>
+
+                <!-- Service 7 -->
+                <div class="service-card" onclick="openServiceModal('Letras Gigantes', 'Letras gigantes ilumidadas (MAJO XV, Bodas, Iniciales) que destacan y decoran tu evento.')">
+                    <div class="icon-circle text-icon">
+                        <span>MA<br>JO<br>XV</span>
+                    </div>
+                    <div class="service-content">
+                        <h4>LETRAS GIGANTES</h4>
+                        <p>Ilumina tu evento con nuestro toque único.</p>
+                    </div>
+                </div>
+
+                <!-- Service 8 -->
+                <div class="service-card" onclick="openServiceModal('Barra de Snacks', 'Deliciosos snacks salados, dulces y botanas presentadas con un diseño gourmet para consentir a tus invitados.')">
+                    <div class="icon-circle">
+                        <svg viewBox="0 0 24 24" class="icon"><path fill="currentColor" d="M18 6h-2c0-2.21-1.79-4-4-4S8 3.79 8 6H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2c1.1 0 2 .9 2 2h-4c0-1.1.9-2 2-2zm0 10c-2.76 0-5-2.24-5-5h2c0 1.66 1.34 3 3 3s3-1.34 3-3h2c0 2.76-2.24 5-5 5z"/></svg>
+                    </div>
+                    <div class="service-content">
+                        <h4>BARRA DE SNACKS</h4>
+                        <p>Deliciosos snacks para tus invitados.</p>
+                    </div>
+                </div>
+
+                <!-- Service 9 -->
+                <div class="service-card" onclick="openServiceModal('Chisperos', 'Efecto pirotécnico frío (chisperos) ideal para entradas de novios, quinceañeras y momentos culminantes.')">
+                    <div class="icon-circle">
+                        <svg viewBox="0 0 24 24" class="icon"><path fill="currentColor" d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z"/></svg>
+                    </div>
+                    <div class="service-content">
+                        <h4>CHISPEROS</h4>
+                        <p>Efecto WOW para los momentos más especiales.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Promos & Paquetes Section (Loaded dynamically or fallback) -->
+        <section id="promosSection" class="promos-section tab-content">
+            <h3 class="section-title">PROMOS & PAQUETES</h3>
+            <p class="gallery-subtitle">Aprovecha nuestras promociones exclusivas para tu evento</p>
+
+            <!-- Promos Grid Container -->
+            <div id="promosGrid" class="promos-grid">
+                <!-- Promo 1: Paquete Básico -->
+                <div class="promo-card" onclick="openServiceModal('PAQUETE BÁSICO - $2,400', 'Incluye: 2 Horas de Cabina de Fotos (Fotos Impresas) + Elige 1 Artículo Extra (Espejo de Bienvenida, Teléfono de Mensajes ó 4 Chisperos).')">
+                    <div class="promo-badge basic">PAQUETE BÁSICO</div>
+                    <div class="promo-price">$2,400</div>
+                    <div class="promo-duration">2 HORAS DE DIVERSIÓN</div>
+                    <ul class="promo-details">
+                        <li>📸 Cabina de Fotos (Fotos impresas)</li>
+                        <li>✨ <strong>Elige 1 Artículo Extra:</strong></li>
+                        <li class="sub-item">• Espejo de Bienvenida</li>
+                        <li class="sub-item">• Teléfono de Mensajes</li>
+                        <li class="sub-item">• 4 Chisperos</li>
+                    </ul>
+                    <button class="promo-btn">Cotizar Paquete Básico</button>
+                </div>
+
+                <!-- Promo 2: Paquete Plus -->
+                <div class="promo-card highlight-card" onclick="openServiceModal('PAQUETE PLUS - $3,400', 'Incluye: 2 Horas de Cabina de Fotos (Fotos Impresas) + 2 Llaveros + Elige 2 Artículos Extra (Espejo de Bienvenida, Teléfono de Mensajes ó 4 Chisperos).')">
+                    <div class="promo-badge plus">PAQUETE PLUS</div>
+                    <div class="promo-price purple">$3,400</div>
+                    <div class="promo-duration">2 HORAS DE DIVERSIÓN</div>
+                    <ul class="promo-details">
+                        <li>📸 Cabina de Fotos + 2 Llaveros</li>
+                        <li>✨ <strong>Elige 2 Artículos Extra:</strong></li>
+                        <li class="sub-item">• Espejo de Bienvenida</li>
+                        <li class="sub-item">• Teléfono de Mensajes</li>
+                        <li class="sub-item">• 4 Chisperos</li>
+                    </ul>
+                    <button class="promo-btn plus-btn">Cotizar Paquete Plus</button>
+                </div>
+
+                <!-- Promo 3: Cabina + Dr. Simi -->
+                <div class="promo-card" onclick="openServiceModal('CABINA + DR. SIMI - $4,000', 'Incluye: Cabina de Fotos con fotos impresas + Botarga animada de Dr. Simi. ¡Ahorras $400!')">
+                    <div class="savings-tag">AHORRAS $400</div>
+                    <div class="promo-title">CABINA + DR. SIMI</div>
+                    <div class="promo-price">$4,000</div>
+                    <div class="old-price">Precio normal: $4,400</div>
+                    <ul class="promo-details">
+                        <li>📸 Cabina de Fotos (con fotos)</li>
+                        <li>🐻 Botarga de Dr. Simi</li>
+                        <li>🖼️ Fotos impresas instantáneas</li>
+                    </ul>
+                    <button class="promo-btn">Cotizar Promo Simi</button>
+                </div>
+
+                <!-- Promo 4: Cabina + La Monja -->
+                <div class="promo-card" onclick="openServiceModal('CABINA + LA MONJA - $3,500', 'Incluye: Cabina de Fotos con fotos impresas + Botarga animada de La Monja. ¡Ahorras $400!')">
+                    <div class="savings-tag">AHORRAS $400</div>
+                    <div class="promo-title">CABINA + LA MONJA</div>
+                    <div class="promo-price">$3,500</div>
+                    <div class="old-price">Precio normal: $3,900</div>
+                    <ul class="promo-details">
+                        <li>📸 Cabina de Fotos (con fotos)</li>
+                        <li>✝️ Botarga de La Monja</li>
+                        <li>🖼️ Fotos impresas instantáneas</li>
+                    </ul>
+                    <button class="promo-btn">Cotizar Promo Monja</button>
+                </div>
+
+                <!-- Promo 5: Cabina + Dr. Simi + La Monja -->
+                <div class="promo-card" onclick="openServiceModal('CABINA + DR. SIMI + LA MONJA - $5,000', 'Incluye: Cabina de Fotos + Both Botargas (Dr. Simi y La Monja) + Fotos impresas. ¡Ahorras $400!')">
+                    <div class="savings-tag">AHORRAS $400</div>
+                    <div class="promo-title">DUO BOTARGAS</div>
+                    <div class="promo-price">$5,000</div>
+                    <div class="old-price">Precio normal: $5,400</div>
+                    <ul class="promo-details">
+                        <li>📸 Cabina de Fotos (con fotos)</li>
+                        <li>🐻 Botarga de Dr. Simi</li>
+                        <li>✝️ Botarga de La Monja</li>
+                    </ul>
+                    <button class="promo-btn">Cotizar Duo Botargas</button>
+                </div>
+
+                <!-- Promo 6: Paquete Fiesta Completa -->
+                <div class="promo-card highlight-card" onclick="openServiceModal('PAQUETE FIESTA COMPLETA - $5,700', 'Incluye: Cabina de Fotos + Botarga Dr. Simi + Botarga La Monja + Llaveros personalizados. ¡Ahorras $700!')">
+                    <div class="savings-tag gold">AHORRAS $700</div>
+                    <div class="promo-badge plus">FIESTA COMPLETA</div>
+                    <div class="promo-price purple">$5,700</div>
+                    <div class="old-price">Precio normal: $6,400</div>
+                    <ul class="promo-details">
+                        <li>📸 Cabina de Fotos</li>
+                        <li>🐻 Botarga de Dr. Simi</li>
+                        <li>✝️ Botarga de La Monja</li>
+                        <li>🔑 Llaveros personalizados</li>
+                    </ul>
+                    <button class="promo-btn plus-btn">Cotizar Fiesta Completa</button>
+                </div>
+            </div>
+
+            <!-- Extintor de Shots Bonus Box -->
+            <div class="extintor-box" onclick="openServiceModal('PROMO EXTINTOR DE SHOTS DE 2L', '¡Por tiempo limitado! Incluye 2 Litros de Shot servidos en Extintor para los primeros 10 en contratar. ¡La diversión se sirve en grande!')">
+                <div class="fire-icon">🔥🧯</div>
+                <h4>BONUS ESPECIAL POR TIEMPO LIMITADO</h4>
+                <h3>INCLUYE 2 Lts DE SHOT EN EL EXTINTOR</h3>
+                <p>¡La diversión se sirve en grande! *(Aplica para los primeros 10 en contratar)*</p>
+                <button class="extintor-btn">¡Aparta tu Fecha y Reclama tu Extintor!</button>
+            </div>
+        </section>
+
+        <!-- Casos de Éxito (Gallery) Section -->
+        <section id="gallerySection" class="gallery-section tab-content">
+            <h3 class="section-title">CASOS DE ÉXITO</h3>
+            <p class="gallery-subtitle">Toca cualquier categoría para ver nuestras fotografías de eventos reales</p>
+
+            <!-- Gallery Grid with Generic Categories linking to folder images -->
+            <div class="gallery-grid">
+                <!-- Espejos de Bienvenida -->
+                <div class="gallery-item" onclick="openCategoryCarousel('espejos', 'Espejos de Bienvenida', 'Espejos de arco y dorados con vinil personalizado y arreglos florales para eventos.')">
+                    <div class="gallery-card-inner">
+                        <div class="gallery-icon-bg">🪞</div>
+                        <div class="gallery-info">
+                            <h5>Espejos de Bienvenida</h5>
+                            <span>5 Fotos Reales</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tiras e Impresiones en Llaveros -->
+                <div class="gallery-item" onclick="openCategoryCarousel('llaveros', 'Tiras e Impresiones en Llaveros', 'Impresión instantánea en tiras de fotos y llaveros acrílicos personalizados.')">
+                    <div class="gallery-card-inner">
+                        <div class="gallery-icon-bg">📸</div>
+                        <div class="gallery-info">
+                            <h5>Tiras e Impresiones en Llaveros</h5>
+                            <span>2 Fotos Reales</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cabina Inflable -->
+                <div class="gallery-item" onclick="openCategoryCarousel('cabina', 'Cabina Inflable', 'Cabina de fotos inflable en color negro con iluminación ambiental LED de colores.')">
+                    <div class="gallery-card-inner">
+                        <div class="gallery-icon-bg">⛺</div>
+                        <div class="gallery-info">
+                            <h5>Cabina Inflable</h5>
+                            <span>1 Foto Real</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carrito de Shots y Chisperos -->
+                <div class="gallery-item" onclick="openCategoryCarousel('shots', 'Carrito de Shots y Chisperos', 'Barra de shots con vasos escarchados y pirotecnia fría para encender la fiesta.')">
+                    <div class="gallery-card-inner">
+                        <div class="gallery-icon-bg">🍹</div>
+                        <div class="gallery-info">
+                            <h5>Carrito de Shots y Chisperos</h5>
+                            <span>1 Foto Real</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Teléfono Vintage -->
+                <div class="gallery-item" onclick="openCategoryCarousel('telefono', 'Teléfono Vintage', 'Teléfono retro blanco para mensajes de audio grabado con árbol de luces LED decorativo.')">
+                    <div class="gallery-card-inner">
+                        <div class="gallery-icon-bg">☎️</div>
+                        <div class="gallery-info">
+                            <h5>Teléfono Vintage</h5>
+                            <span>2 Fotos Reales</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Customer Reviews Section "Matona" -->
+        <section class="reviews-section">
+            <h3 class="section-title">LO QUE DICEN NUESTROS CLIENTES</h3>
+            <p class="gallery-subtitle">Experiencias reales en momentos inolvidables</p>
+
+            <div class="reviews-wrapper">
+                <div class="side-mask left"></div>
+                <div class="side-mask right"></div>
+
+                <div class="reviews-carousel">
+                    <!-- Review 1 -->
+                    <div class="review-card active">
+                        <div class="stars-rating">★★★★★</div>
+                        <p class="review-text">"¡La cabina de fotos y el espejo de bienvenida fueron el éxito total de nuestra boda! Todos los invitados quedaron fascinados con sus fotos impresas."</p>
+                        <div class="review-author">
+                            <span class="author-name">Mariana & Carlos</span>
+                            <span class="event-type">Boda Elegante</span>
+                        </div>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div class="review-card">
+                        <div class="stars-rating">★★★★★</div>
+                        <p class="review-text">"El teléfono de mensajes vintage fue lo más emotivo de la fiesta. Escuchar de nuevo los audios de nuestros seres queridos no tiene precio. ¡Súper recomendados!"</p>
+                        <div class="review-author">
+                            <span class="author-name">Familia Martínez</span>
+                            <span class="event-type">Mis XV Años Majo</span>
+                        </div>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div class="review-card">
+                        <div class="stars-rating">★★★★★</div>
+                        <p class="review-text">"El carrito de shots y los chisperos encendieron la pista de baile al máximo. Excelente servicio, puntualidad y la mejor energía de todo el equipo."</p>
+                        <div class="review-author">
+                            <span class="author-name">Rodrigo & Amigos</span>
+                            <span class="event-type">Graduación & Fiesta</span>
+                        </div>
+                    </div>
+
+                    <!-- Review 4 -->
+                    <div class="review-card">
+                        <div class="stars-rating">★★★★★</div>
+                        <p class="review-text">"Contratamos la cabina con la botarga de Dr. Simi y La Monja. ¡Fue divertidísimo! Risas garantizadas y las fotos impresas salieron con excelente calidad."</p>
+                        <div class="review-author">
+                            <span class="author-name">Dra. Andrea L.</span>
+                            <span class="event-type">Evento Empresarial</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-dots">
+                    <span class="dot active" onclick="setReviewIndex(0)"></span>
+                    <span class="dot" onclick="setReviewIndex(1)"></span>
+                    <span class="dot" onclick="setReviewIndex(2)"></span>
+                    <span class="dot" onclick="setReviewIndex(3)"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Banner -->
+        <section class="cta-banner">
+            <div class="cta-box">
+                <p>¡NOSOTROS HACEMOS QUE <span>CADA MOMENTO CUENTE!</span></p>
+            </div>
+        </section>
+
+        <!-- Social & Contact Footer -->
+        <footer class="contact-footer">
+            <div class="social-links">
+                <!-- Facebook -->
+                <a href="https://facebook.com" target="_blank" class="social-item">
+                    <div class="social-icon">f</div>
+                    <span>SM PHOTOROOM</span>
+                </a>
+
+                <!-- WhatsApp Line 1 -->
+                <a href="https://wa.me/528446086267?text=Hola%20SM%20PHOTOROOM,%20me%20gustaría%20cotizar%20un%20servicio%20para%20mi%20evento." target="_blank" class="social-item whatsapp-btn">
+                    <div class="social-icon wa">
+                        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12.031 2c-5.517 0-9.997 4.48-9.997 9.998 0 2.138.674 4.116 1.821 5.736l-1.855 5.266 5.483-1.798c1.55.938 3.36 1.47 5.295 1.47 5.517 0 9.997-4.48 9.997-9.998 0-5.519-4.48-9.998-9.997-9.998zm5.823 14.159c-.247.693-1.441 1.325-1.996 1.385-.515.056-1.173.08-1.898-.152-.444-.142-1.022-.338-1.772-.662-3.127-1.353-5.158-4.52-5.314-4.729-.156-.208-1.272-1.692-1.272-3.228 0-1.536.804-2.292 1.089-2.602.285-.31.623-.388.831-.388.208 0 .416.002.597.011.193.009.452-.073.708.541.26.623.883 2.155.961 2.311.078.156.13.338.026.546-.104.208-.156.338-.312.52-.156.182-.328.406-.468.546-.156.156-.318.326-.137.638.182.312.809 1.334 1.738 2.162 1.196 1.066 2.203 1.397 2.515 1.553.312.156.494.13.676-.078.182-.208.78-.909.988-1.221.208-.312.416-.26.693-.156.277.104 1.761.831 2.064.983.303.152.506.225.58.351.074.126.074.728-.173 1.421z"/></svg>
+                    </div>
+                    <span class="phone-num">844 608 6267</span>
+                </a>
+
+                <!-- WhatsApp Line 2 -->
+                <a href="https://wa.me/528441790939?text=Hola%20SM%20PHOTOROOM,%20me%20gustaría%20cotizar%20un%20servicio%20para%20mi%20evento." target="_blank" class="social-item whatsapp-btn">
+                    <div class="social-icon wa">
+                        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12.031 2c-5.517 0-9.997 4.48-9.997 9.998 0 2.138.674 4.116 1.821 5.736l-1.855 5.266 5.483-1.798c1.55.938 3.36 1.47 5.295 1.47 5.517 0 9.997-4.48 9.997-9.998 0-5.519-4.48-9.998-9.997-9.998zm5.823 14.159c-.247.693-1.441 1.325-1.996 1.385-.515.056-1.173.08-1.898-.152-.444-.142-1.022-.338-1.772-.662-3.127-1.353-5.158-4.52-5.314-4.729-.156-.208-1.272-1.692-1.272-3.228 0-1.536.804-2.292 1.089-2.602.285-.31.623-.388.831-.388.208 0 .416.002.597.011.193.009.452-.073.708.541.26.623.883 2.155.961 2.311.078.156.13.338.026.546-.104.208-.156.338-.312.52-.156.182-.328.406-.468.546-.156.156-.318.326-.137.638.182.312.809 1.334 1.738 2.162 1.196 1.066 2.203 1.397 2.515 1.553.312.156.494.13.676-.078.182-.208.78-.909.988-1.221.208-.312.416-.26.693-.156.277.104 1.761.831 2.064.983.303.152.506.225.58.351.074.126.074.728-.173 1.421z"/></svg>
+                    </div>
+                    <span class="phone-num">844 179 0939</span>
+                </a>
+            </div>
+
+            <div class="thank-you-msg">
+                <span class="heart">♥</span> GRACIAS POR ELEGIRNOS PARA SER PARTE DE TU HISTORIA
+            </div>
+        </footer>
+    </main>
+
+    <!-- Service Modal -->
+    <div id="serviceModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeServiceModal()">&times;</span>
+            <h3 id="modalTitle">Nombre del Servicio</h3>
+            <p id="modalDesc">Descripción del servicio...</p>
+            <div class="quote-buttons-container">
+                <a id="modalWaBtn1" href="#" target="_blank" class="quote-btn">
+                    <span>Cotizar por WhatsApp (844 608 6267)</span>
+                </a>
+                <a id="modalWaBtn2" href="#" target="_blank" class="quote-btn alt-btn">
+                    <span>Cotizar por WhatsApp (844 179 0939)</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Photo Carousel Lightbox Modal -->
+    <div id="photoLightboxModal" class="modal">
+        <div class="modal-content photo-modal-content">
+            <span class="close-btn" onclick="closePhotoLightbox()">&times;</span>
+            <h3 id="photoModalTitle">Servicio</h3>
+
+            <!-- Photo Frame with Navigation Controls -->
+            <div id="photoPreviewFrame" class="photo-frame">
+                <button id="prevBtn" class="carousel-btn prev" onclick="prevPhoto()">&lsaquo;</button>
+                <img id="lightboxImage" src="" alt="Fotografía del servicio" class="lightbox-img">
+                <button id="nextBtn" class="carousel-btn next" onclick="nextPhoto()">&rsaquo;</button>
+            </div>
+
+            <div id="photoCounter" class="photo-counter">Foto 1 de 1</div>
+            <p id="photoModalDesc">Descripción del servicio...</p>
+            <div class="quote-buttons-container">
+                <a id="photoModalWaBtn1" href="#" target="_blank" class="quote-btn">
+                    <span>Cotizar estilo al 844 608 6267</span>
+                </a>
+                <a id="photoModalWaBtn2" href="#" target="_blank" class="quote-btn alt-btn">
+                    <span>Cotizar estilo al 844 179 0939</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
